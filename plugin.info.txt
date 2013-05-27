@@ -4,4 +4,4 @@ email  bnemcic@gmail.com
 date   2013-05-27
 name   Block Info plugin
 desc   Provides syntax for Minecraft block info box
-url    http://www.test.com
+url    https://github.com/Onyx47/blockinfo
