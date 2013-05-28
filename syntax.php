@@ -91,24 +91,108 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= '<th colspan="2">'.$name.'</th>';
                     $renderer->doc .= '</tr>';
 
-                    //Render image as a dokuwiki tag
-                    $dw_rendered_output = p_render('xhtml',p_get_instructions($image),$info);
+                    if($this->getConf('value_parse') == true)
+                    {
+                        //Render image as a dokuwiki tag
+                        $image_val = p_render('xhtml',p_get_instructions($image),$info);
+                    }
+                    else
+                    {
+                        $image_val = $image;
+                    }
 
                     $renderer->doc .= '<tr>';
                     $renderer->doc .= '<td colspan="2">';
-                    $renderer->doc .= $dw_rendered_output;
+                    $renderer->doc .= $image_val;
                     $renderer->doc .= '</td>';
                     $renderer->doc .= '</tr>';
 
-                    foreach ($attributes as $attribute)
-                    {
-                        //Allow dokuwiki to parse attributes
-                        $dw_rendered_output = p_render('xhtml',p_get_instructions($attribute[2]),$info);
+                    $attr_uppercase_mode = $this->getConf('attr_uppercase');
+                    $value_uppercase_mode = $this->getConf('value_uppercase');
 
+                    foreach($attributes as $attribute)
+                    {
                         $renderer->doc .= '<tr>';
-                        $renderer->doc .= '<th>'.ucfirst(strtolower($attribute[1])).'</th>';
+                        $renderer->doc .= '<th>';
+
+                        $attr_name = '';
+
+                        $words = explode(' ', trim($attribute[1]));
+
+                        foreach($words as $key => $word)
+                        {
+                            switch($attr_uppercase_mode)
+                            {
+                                case 'first':
+                                    if($key == 0) $word = ucfirst(strtolower($word));
+                                    break;
+
+                                case 'words':
+                                    $word = ucfirst(strtolower($word));
+                                    break;
+
+                                case 'all':
+                                    $word = strtoupper($word);
+                                    break;
+                            }
+
+                            $attr_name .= $word.' ';
+                        }
+
+                        $attr_name = trim($attr_name);
+
+                        $renderer->doc .= $attr_name;
+
+                        $renderer->doc .= '</th>';
                         $renderer->doc .= '<td>';
-                        $renderer->doc .= $dw_rendered_output;
+
+                        $value = '';
+
+                        //Allow dokuwiki to parse attribute values
+                        if($this->getConf('value_parse') == true)
+                        {
+                            $value_raw = p_render('xhtml', p_get_instructions($attribute[2]),$info);
+                        }
+                        else
+                        {
+                            $value_raw = $attribute[2];
+                        }
+
+                        if($this->getConf('value_parse') == false || $this->getConf('value_format_force') == true)
+                        {
+                            //Strip all HTML from output
+                            $value_raw = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($value_raw))))));
+
+                            $words = explode(' ', strip_tags($value_raw));
+
+                            foreach($words as $key => $word)
+                            {
+                                switch($value_uppercase_mode)
+                                {
+                                    case 'first':
+                                        if($key == 0) $word = ucfirst(strtolower($word));
+                                        break;
+
+                                    case 'words':
+                                        $word = ucfirst(strtolower($word));
+                                        break;
+
+                                    case 'all':
+                                        $word = strtoupper($word);
+                                        break;
+                                }
+
+                                $value .= $word.' ';
+                            }
+                        }
+                        else
+                        {
+                            $value = $value_raw;
+                        }
+
+                        $value = trim($value);
+
+                        $renderer->doc .= $value;
                         $renderer->doc .= '</td>';
                         $renderer->doc .= '</tr>';
                     }
