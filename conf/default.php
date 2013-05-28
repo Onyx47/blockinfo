@@ -11,8 +11,9 @@ $conf['attr_uppercase']     = 'words';  // Automatically capitalize attribute na
                                         // 'words': capitalize each word
                                         // 'all': all caps
 
-$conf['attr_parse']         = false;
-$conf['attr_format_force']  = false;
+$conf['attr_parse']         = false;    // If true, attributes will be parsed as dokuwiki syntax
+$conf['attr_format_force']  = false;    // Force plugin to format attributes
+                                        // even if they get parsed as dokuwiki syntax
 
 $conf['value_uppercase']    = 'none';   // Automatically capitalize values
                                         // 'none': no change, leave attribute name as defined in tag
