@@ -11,6 +11,9 @@ $conf['attr_uppercase']     = 'words';  // Automatically capitalize attribute na
                                         // 'words': capitalize each word
                                         // 'all': all caps
 
+$conf['attr_parse']         = false;
+$conf['attr_format_force']  = false;
+
 $conf['value_uppercase']    = 'none';   // Automatically capitalize values
                                         // 'none': no change, leave attribute name as defined in tag
                                         // 'first': capitalize first word, leave the rest as-is

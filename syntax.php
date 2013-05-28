@@ -11,6 +11,7 @@ if(!defined('DOKU_INC')) die();
 
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once DOKU_PLUGIN.'syntax.php';
+require_once DOKU_PLUGIN.'blockinfo/helper.php';
 
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
@@ -88,112 +89,34 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= '<tbody>';
 
                     $renderer->doc .= '<tr>';
-                    $renderer->doc .= '<th colspan="2">'.$name.'</th>';
-                    $renderer->doc .= '</tr>';
 
-                    if($this->getConf('value_parse') == true)
-                    {
-                        //Render image as a dokuwiki tag
-                        $image_val = p_render('xhtml',p_get_instructions($image),$info);
-                    }
-                    else
-                    {
-                        $image_val = $image;
-                    }
+                    $renderer->doc .= '<th colspan="2">'.$name.'</th>';
+
+                    $renderer->doc .= '</tr>';
 
                     $renderer->doc .= '<tr>';
+
                     $renderer->doc .= '<td colspan="2">';
-                    $renderer->doc .= $image_val;
+                    $renderer->doc .= blockinfoHelper::parseOutput($image, 'value', $this);// $image_val;
                     $renderer->doc .= '</td>';
+
                     $renderer->doc .= '</tr>';
 
-                    $attr_uppercase_mode = $this->getConf('attr_uppercase');
+                    //$attr_uppercase_mode = $this->getConf('attr_uppercase');
                     $value_uppercase_mode = $this->getConf('value_uppercase');
 
                     foreach($attributes as $attribute)
                     {
                         $renderer->doc .= '<tr>';
+
                         $renderer->doc .= '<th>';
-
-                        $attr_name = '';
-
-                        $words = explode(' ', trim($attribute[1]));
-
-                        foreach($words as $key => $word)
-                        {
-                            switch($attr_uppercase_mode)
-                            {
-                                case 'first':
-                                    if($key == 0) $word = ucfirst(strtolower($word));
-                                    break;
-
-                                case 'words':
-                                    $word = ucfirst(strtolower($word));
-                                    break;
-
-                                case 'all':
-                                    $word = strtoupper($word);
-                                    break;
-                            }
-
-                            $attr_name .= $word.' ';
-                        }
-
-                        $attr_name = trim($attr_name);
-
-                        $renderer->doc .= $attr_name;
-
+                        $renderer->doc .= blockinfoHelper::parseOutput($attribute[1], 'attr', $this);
                         $renderer->doc .= '</th>';
+
                         $renderer->doc .= '<td>';
-
-                        $value = '';
-
-                        //Allow dokuwiki to parse attribute values
-                        if($this->getConf('value_parse') == true)
-                        {
-                            $value_raw = p_render('xhtml', p_get_instructions($attribute[2]),$info);
-                        }
-                        else
-                        {
-                            $value_raw = $attribute[2];
-                        }
-
-                        if($this->getConf('value_parse') == false || $this->getConf('value_format_force') == true)
-                        {
-                            //Strip all HTML from output
-                            $value_raw = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($value_raw))))));
-
-                            $words = explode(' ', strip_tags($value_raw));
-
-                            foreach($words as $key => $word)
-                            {
-                                switch($value_uppercase_mode)
-                                {
-                                    case 'first':
-                                        if($key == 0) $word = ucfirst(strtolower($word));
-                                        break;
-
-                                    case 'words':
-                                        $word = ucfirst(strtolower($word));
-                                        break;
-
-                                    case 'all':
-                                        $word = strtoupper($word);
-                                        break;
-                                }
-
-                                $value .= $word.' ';
-                            }
-                        }
-                        else
-                        {
-                            $value = $value_raw;
-                        }
-
-                        $value = trim($value);
-
-                        $renderer->doc .= $value;
+                        $renderer->doc .= blockinfoHelper::parseOutput($attribute[2], 'value', $this);
                         $renderer->doc .= '</td>';
+
                         $renderer->doc .= '</tr>';
                     }
 
