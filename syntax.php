@@ -57,7 +57,7 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     }
 
                     //Get attributes
-                    else if(preg_match("/<([A-z]+)\s*:\s*(.*)>/", $line, $matches))
+                    else if(preg_match("/<([A-z\s]+)\s*:\s*(.*)>/", $line, $matches))
                     {
                         array_push($attributes, $matches);
                     }
