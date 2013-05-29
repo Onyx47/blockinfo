@@ -9,7 +9,7 @@ Usage
 Use the following syntax on your page:
 
 &lt;blockinfo&gt;<br>
-[&lt;_option_name: option_value&gt;]
+[&lt;_option_name: option_value&gt;]<br>
 [&lt;name: Block name&gt;]<br>
 [&lt;image: {{ :namespace:image }} or url&gt;]<br>
 [&lt;attribute: value&gt;]<br>
