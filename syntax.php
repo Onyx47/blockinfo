@@ -36,7 +36,10 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
     function connectTo($mode) { $this->Lexer->addEntryPattern('<blockinfo.*>(?=.*?</blockinfo>)',$mode,'plugin_blockinfo'); }
     function postConnect() { $this->Lexer->addExitPattern('</blockinfo>','plugin_blockinfo'); }
 
-    function handle($match, $state, $pos, &$handler) {
+    function handle($match, $state, $pos, &$handler)
+    {
+        $helper = blockinfoHelper::getInstance();
+
         switch ($state) {
             case DOKU_LEXER_ENTER :
 
@@ -57,6 +60,12 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                         $image = $matches[1];
                     }
 
+                    //Get option overrides
+                    else if(preg_match("/<_([A-z\s]+)\s*:\s*(.*)>/", $line, $matches))
+                    {
+                        $helper->setOption($matches[1], $matches[2]);
+                    }
+
                     //Get attributes
                     else if(preg_match("/<([A-z\s]+)\s*:\s*(.*)>/", $line, $matches))
                     {
@@ -74,6 +83,8 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
 
     function render($mode, &$renderer, $data)
     {
+        $helper = blockinfoHelper::getInstance();
+
         if($mode == 'xhtml')
         {
             list($state, $match) = $data;
@@ -90,14 +101,14 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
 
                     $renderer->doc .= '<tr>';
 
-                    $renderer->doc .= '<th colspan="2">'.$name.'</th>';
+                    $renderer->doc .= '<th colspan="2" '.$helper->setCellStyling('title', $this).'>'.$name.'</th>';
 
                     $renderer->doc .= '</tr>';
 
                     $renderer->doc .= '<tr>';
 
                     $renderer->doc .= '<td colspan="2">';
-                    $renderer->doc .= blockinfoHelper::parseOutput($image, 'value', $this);// $image_val;
+                    $renderer->doc .= $helper->parseOutput($image, 'value', $this);
                     $renderer->doc .= '</td>';
 
                     $renderer->doc .= '</tr>';
@@ -109,12 +120,12 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     {
                         $renderer->doc .= '<tr>';
 
-                        $renderer->doc .= '<th>';
-                        $renderer->doc .= blockinfoHelper::parseOutput($attribute[1], 'attr', $this);
+                        $renderer->doc .= '<th '.$helper->setCellStyling('attr', $this).'>';
+                        $renderer->doc .= $helper->parseOutput($attribute[1], 'attr', $this);
                         $renderer->doc .= '</th>';
 
-                        $renderer->doc .= '<td>';
-                        $renderer->doc .= blockinfoHelper::parseOutput($attribute[2], 'value', $this);
+                        $renderer->doc .= '<td '.$helper->setCellStyling('value', $this).'>';
+                        $renderer->doc .= $helper->parseOutput($attribute[2], 'value', $this);
                         $renderer->doc .= '</td>';
 
                         $renderer->doc .= '</tr>';

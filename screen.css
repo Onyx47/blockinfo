@@ -3,15 +3,37 @@ div.page div.block-info
     position:relative;
     float: right;
     margin: 2px;
-    width: 300px;
+    padding: 2px;
+    width: auto;
+    border: 1px solid __border__;
 }
 
 div.page div.block-info table
 {
-    width: 100% !important;
+    /*border: 1px solid black !important;*/
 }
 
 div.page div.block-info table tbody
 {
     width: 100% !important;
+}
+
+div.page div.block-info th
+{
+    border: 0px;
+    height: auto;
+}
+
+div.page div.block-info td
+{
+    border: 0px;
+    height: auto;
+    margin: 0;
+}
+
+div.page div.block-info tr
+{
+    border: 0px;
+    padding-bottom: 0px !important;
+    height: auto;
 }

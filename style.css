@@ -3,15 +3,21 @@ div.page div.block-info
     position:relative;
     float: right;
     margin: 2px;
-    width: 300px;
+    width: auto;
+    border: 1px solid inherit;
 }
 
 div.page div.block-info table
 {
-    width: 100% !important;
+    border: 0px !important;
 }
 
 div.page div.block-info table tbody
 {
     width: 100% !important;
+}
+
+div.page div.block-info th
+{
+    border: 0px;
 }
