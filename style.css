@@ -1,24 +1,71 @@
+/* Block info box */
 div.page div.block-info
 {
     position:relative;
     float: right;
+
+    /* Customize only the options below */
     margin: 2px;
+    padding: 2px;
     width: auto;
-    border: 1px solid inherit;
+    min-width: auto;
+    max-width: auto;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: __border__ !important;
+    background-color: transparent;
 }
 
+/* Block info table (nested in div.block-info) */
 div.page div.block-info table
 {
-    border-width: 1px;
-    border-color: inherit;
+    border-width: 0px !important; /* Keep !important for override to work! */
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
 }
 
-div.page div.block-info table tbody
+/* Block name container */
+div.page div.block-info .title
 {
-    width: 100% !important;
+    display: block;
+    width: 100%;
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: __background_neu__;
+    color: __text_neu__;
+    text-align: center !important;
+    text-transform: uppercase;
 }
 
-div.page div.block-info th
+/* Block image container */
+div.page div.block-info .block-image
 {
-    border: 0px;
+    display: block;
+    padding: 5px;
+    border-width: 0px;
+}
+
+/* Block image */
+div.page div.block-info .block-image img {}
+
+/* Attribute column */
+div.page div.block-info th.attribute
+{
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
+    color: __text__;
+}
+
+/* Value column */
+div.page div.block-info td.value
+{
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
+    color: __text__;
 }

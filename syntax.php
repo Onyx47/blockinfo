@@ -96,25 +96,10 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
 
                     $renderer->doc .= '<div class="block-info">';
 
+                    $renderer->doc .= '<span class="title">'.$name.'</span>';
+                    $renderer->doc .= '<span class="block-image">'.$helper->parseOutput($image, 'value', $this).'</span>';
+
                     $renderer->doc .= '<table>';
-                    $renderer->doc .= '<tbody>';
-
-                    $renderer->doc .= '<tr>';
-
-                    $renderer->doc .= '<th colspan="2" class="title"'.$helper->setCellStyling('title', $this).'>'.$name.'</th>';
-
-                    $renderer->doc .= '</tr>';
-
-                    $renderer->doc .= '<tr>';
-
-                    $renderer->doc .= '<td colspan="2" class="block-image">';
-                    $renderer->doc .= $helper->parseOutput($image, 'value', $this);
-                    $renderer->doc .= '</td>';
-
-                    $renderer->doc .= '</tr>';
-
-                    //$attr_uppercase_mode = $this->getConf('attr_uppercase');
-                    $value_uppercase_mode = $this->getConf('value_uppercase');
 
                     foreach($attributes as $attribute)
                     {
@@ -131,7 +116,6 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                         $renderer->doc .= '</tr>';
                     }
 
-                    $renderer->doc .= '</tbody>';
                     $renderer->doc .= '</table>';
 
                 break;

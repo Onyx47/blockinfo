@@ -25,51 +25,33 @@ div.page div.block-info table
     background-color: transparent;
 }
 
-/* Block info table body */
-div.page div.block-info table tbody
+/* Block name container */
+div.page div.block-info .title
 {
-    width: 100% !important;
-    border-width: 0px;
-    border-style: solid;
-    border-color: transparent;
-    background-color: transparent;
-}
-
-/* Generic table header */
-div.page div.block-info th
-{
+    display: block;
+    width: 100%;
     border-width: 0px;
     border-style: solid;
     border-color: __border__;
     background-color: __background_neu__;
     color: __text_neu__;
-}
-
-/* Generic table cell */
-div.page div.block-info td
-{
-    border-width: 0px;
-    border-style: solid;
-    border-color: __border__;
-    background-color: transparent;
-    color: __text__;
-}
-
-/* Block name (overrides generic table header)*/
-div.page div.block-info th.title
-{
     text-align: center !important;
     text-transform: uppercase;
 }
 
-/* Block image (overrides generic table cell)*/
-div.page div.block-info tr td.block-image
+/* Block image container */
+div.page div.block-info .block-image
 {
+    display: block;
+    padding: 5px;
     border-width: 0px;
 }
 
-/* Attribute column (overrides generic table header) */
-div.page div.block-info tr th.attribute
+/* Block image */
+div.page div.block-info .block-image img {}
+
+/* Attribute column */
+div.page div.block-info th.attribute
 {
     border-width: 0px;
     border-style: solid;
@@ -78,8 +60,8 @@ div.page div.block-info tr th.attribute
     color: __text__;
 }
 
-/* Value column (overrides generic table cell) */
-div.page div.block-info tr td.value
+/* Value column */
+div.page div.block-info td.value
 {
     border-width: 0px;
     border-style: solid;
