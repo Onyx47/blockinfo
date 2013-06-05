@@ -37,9 +37,9 @@ You can override options set in conf/default.php by using following syntax:
 
 &lt;_option_name: option_value&gt;
 
-For example, to override the default box border color you can use:
+For example, to override default attribute uppercase rule and set it to all caps:
 
-&lt;_box_border_color: red&gt;
+&lt;_attr_uppercase: all&gt;
 
 For the list of supported options refer to file conf/default.php
 
