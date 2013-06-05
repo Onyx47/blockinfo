@@ -5,6 +5,9 @@
  * @author Bojan Nemcic <bnemcic@gmail.com>
  */
 
+$conf['block_class']            = 'block-info'; // Class name to use for the block info container div
+                                                // WARNING: If you change this make sure you edit your CSS files
+                                                //          and set the proper class name!
 
 /*
  * FORMATTING OPTIONS

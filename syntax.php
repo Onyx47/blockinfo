@@ -94,7 +94,7 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                 case DOKU_LEXER_ENTER :
                     list($name, $image, $attributes) = $match;
 
-                    $renderer->doc .= '<div class="block-info">';
+                    $renderer->doc .= '<div class="'.$this->getConf('block_class').'">';
 
                     $renderer->doc .= '<span class="title">'.$name.'</span>';
                     $renderer->doc .= '<span class="block-image">'.$helper->parseOutput($image, 'value', $this).'</span>';
@@ -105,11 +105,11 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     {
                         $renderer->doc .= '<tr>';
 
-                        $renderer->doc .= '<th class="attribute" '.$helper->setCellStyling('attr', $this).'>';
+                        $renderer->doc .= '<th class="attribute">';
                         $renderer->doc .= $helper->parseOutput($attribute[1], 'attr', $this);
                         $renderer->doc .= '</th>';
 
-                        $renderer->doc .= '<td class="value" '.$helper->setCellStyling('value', $this).'>';
+                        $renderer->doc .= '<td class="value">';
                         $renderer->doc .= $helper->parseOutput($attribute[2], 'value', $this);
                         $renderer->doc .= '</td>';
 

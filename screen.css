@@ -1,5 +1,5 @@
 /* Block info box */
-div.page div.block-info
+div.block-info
 {
     position:relative;
     float: right;
@@ -17,7 +17,7 @@ div.page div.block-info
 }
 
 /* Block info table (nested in div.block-info) */
-div.page div.block-info table
+div.block-info table
 {
     border-width: 0px !important; /* Keep !important for override to work! */
     border-style: solid;
@@ -26,7 +26,7 @@ div.page div.block-info table
 }
 
 /* Block name container */
-div.page div.block-info .title
+div.block-info .title
 {
     display: block;
     width: 100%;
@@ -40,7 +40,7 @@ div.page div.block-info .title
 }
 
 /* Block image container */
-div.page div.block-info .block-image
+div.block-info .block-image
 {
     display: block;
     padding: 5px;
@@ -48,10 +48,10 @@ div.page div.block-info .block-image
 }
 
 /* Block image */
-div.page div.block-info .block-image img {}
+div.block-info .block-image img {}
 
 /* Attribute column */
-div.page div.block-info th.attribute
+div.block-info th.attribute
 {
     border-width: 0px;
     border-style: solid;
@@ -61,7 +61,7 @@ div.page div.block-info th.attribute
 }
 
 /* Value column */
-div.page div.block-info td.value
+div.block-info td.value
 {
     border-width: 0px;
     border-style: solid;
@@ -69,5 +69,3 @@ div.page div.block-info td.value
     background-color: transparent;
     color: __text__;
 }
-
-/*** Add your own classes here ***/

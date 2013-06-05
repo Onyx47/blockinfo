@@ -87,52 +87,6 @@
 
             return trim($output);
         }
-
-        public function setBoxStyling($obj)
-        {
-            $output         = 'style="';
-
-            $sizing_policy  = trim(self::getOverride('box_sizing_policy', $obj));
-            $size           = trim(self::getOverride('box_size', $obj));
-
-            $output .= $sizing_policy.': '.$size.'px;';
-
-            $output .= '"';
-
-            return $output;
-        }
-
-        public function setTableStyling($obj)
-        {
-            $output         = 'style="';
-
-            $border_width   = intval(self::getOverride('box_border_width'));
-            $border_color   = trim(self::getOverride('box_border_color'));
-
-            $output .= 'border: '.$border_width.'px solid;';
-
-            $output .= '"';
-
-            return $output;
-        }
-
-        public function setCellStyling($type, $obj)
-        {
-            $output         = 'style="';
-
-            $background     = trim(self::getOverride($type.'_background', $obj));
-            $color          = trim(self::getOverride($type.'_color', $obj));
-
-            if(strlen($background) && $background != 'inherit')
-                $output .= 'background: '.$background.'; ';
-
-            if(strlen($color) && $color != 'inherit')
-                $output .= 'color: '.$color.';';
-
-            $output .= '"';
-
-            return $output;
-        }
     }
 
 ?>
