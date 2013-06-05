@@ -35,7 +35,7 @@ You can use as many custom attributes as you want. You can also use dokuwiki syn
 Configuration
 =========
 
-See DOKUWIKI_ROOT/lib/plugins/blockinfo/config/default.php for configuration options.
+See <strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/config/default.php</strong> for configuration options.
 
 Note that options will not come into effect until you edit and save an article. This has to be done for each article separately.
 
@@ -59,6 +59,6 @@ Custom CSS
 
 You can set custom CSS styles in following files:
 
-<strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/screen.css</strong> for regular website display
+<strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/screen.css</strong> for regular website display<br>
 <strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/style.css</strong> for other uses
 
