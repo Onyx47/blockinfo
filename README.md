@@ -3,6 +3,17 @@ blockinfo
 
 Block info plugin for dokuwiki
 
+Installation
+=========
+
+You can install this plugin by pasting this URL into dokuwiki's plugin manager:
+
+<a href="https://github.com/Onyx47/blockinfo/archive/master.zip">https://github.com/Onyx47/blockinfo/archive/master.zip</a>
+
+You can also manually copy all the files to:
+
+<strong>DOKUWIKI_ROOT/lib/plugins/blockinfo</strong>
+
 Usage
 =========
 
@@ -24,7 +35,7 @@ You can use as many custom attributes as you want. You can also use dokuwiki syn
 Configuration
 =========
 
-See config/default.php for configuration options.
+See DOKUWIKI_ROOT/lib/plugins/blockinfo/config/default.php for configuration options.
 
 Note that options will not come into effect until you edit and save an article. This has to be done for each article separately.
 
@@ -33,15 +44,21 @@ It's strongly advised that you tweak the options to your liking BEFORE adding lo
 Option overrides
 =========
 
-You can override options set in conf/default.php by using following syntax:
+You can override options set in <strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/conf/default.php</strong> by using following syntax:
 
-&lt;_option_name: option_value&gt;
+<strong>&lt;_option_name: option_value&gt;</strong>
 
 For example, to override default attribute uppercase rule and set it to all caps:
 
-&lt;_attr_uppercase: all&gt;
+<strong>&lt;_attr_uppercase: all&gt;</strong>
 
-For the list of supported options refer to file conf/default.php
+For the list of supported options refer to file <strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/conf/default.php</strong>
 
+Custom CSS
+========
 
+You can set custom CSS styles in following files:
+
+<strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/screen.css</strong> for regular website display
+<strong>DOKUWIKI_ROOT/lib/plugins/blockinfo/style.css</strong> for other uses
 
