@@ -120,8 +120,8 @@
         {
             $output         = 'style="';
 
-            $background     = trim(self::getOverride($type.'_background'));
-            $color          = trim(self::getOverride($type.'_color'));
+            $background     = trim(self::getOverride($type.'_background', $obj));
+            $color          = trim(self::getOverride($type.'_color', $obj));
 
             if(strlen($background) && $background != 'inherit')
                 $output .= 'background: '.$background.'; ';

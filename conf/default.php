@@ -9,7 +9,7 @@
  * STYLING OPTIONS
  */
 
-$conf['box_border_width']       = 1;            /* Block info box border width, in pixels*/
+$conf['box_border_width']       = 5;            /* Block info box border width, in pixels*/
 $conf['box_sizing_policy']      = 'max-width';  /* Box sizing policy.
                                                         'min-width': set minimum width to the given value
                                                         'max-width': set maximum width to the given value

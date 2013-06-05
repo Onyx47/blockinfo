@@ -9,7 +9,8 @@ div.page div.block-info
 
 div.page div.block-info table
 {
-    border: 0px !important;
+    border-width: 1px;
+    border-color: inherit;
 }
 
 div.page div.block-info table tbody

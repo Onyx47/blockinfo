@@ -101,13 +101,13 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
 
                     $renderer->doc .= '<tr>';
 
-                    $renderer->doc .= '<th colspan="2" '.$helper->setCellStyling('title', $this).'>'.$name.'</th>';
+                    $renderer->doc .= '<th colspan="2" class="title"'.$helper->setCellStyling('title', $this).'>'.$name.'</th>';
 
                     $renderer->doc .= '</tr>';
 
                     $renderer->doc .= '<tr>';
 
-                    $renderer->doc .= '<td colspan="2">';
+                    $renderer->doc .= '<td colspan="2" class="block-image">';
                     $renderer->doc .= $helper->parseOutput($image, 'value', $this);
                     $renderer->doc .= '</td>';
 
@@ -120,11 +120,11 @@ class syntax_plugin_blockinfo extends DokuWiki_Syntax_Plugin {
                     {
                         $renderer->doc .= '<tr>';
 
-                        $renderer->doc .= '<th '.$helper->setCellStyling('attr', $this).'>';
+                        $renderer->doc .= '<th class="attribute" '.$helper->setCellStyling('attr', $this).'>';
                         $renderer->doc .= $helper->parseOutput($attribute[1], 'attr', $this);
                         $renderer->doc .= '</th>';
 
-                        $renderer->doc .= '<td '.$helper->setCellStyling('value', $this).'>';
+                        $renderer->doc .= '<td class="value" '.$helper->setCellStyling('value', $this).'>';
                         $renderer->doc .= $helper->parseOutput($attribute[2], 'value', $this);
                         $renderer->doc .= '</td>';
 

@@ -1,39 +1,89 @@
+/* Block info box */
 div.page div.block-info
 {
     position:relative;
     float: right;
+
+    /* Customize only the options below */
     margin: 2px;
     padding: 2px;
     width: auto;
-    border: 1px solid __border__;
+    min-width: auto;
+    max-width: auto;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: __border__ !important;
+    background-color: transparent;
 }
 
+/* Block info table (nested in div.block-info) */
 div.page div.block-info table
 {
-    /*border: 1px solid black !important;*/
+    border-width: 0px !important; /* Keep !important for override to work! */
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
 }
 
+/* Block info table body */
 div.page div.block-info table tbody
 {
     width: 100% !important;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: transparent;
 }
 
+/* Generic table header */
 div.page div.block-info th
 {
-    border: 0px;
-    height: auto;
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: __background_neu__;
+    color: __text_neu__;
 }
 
+/* Generic table cell */
 div.page div.block-info td
 {
-    border: 0px;
-    height: auto;
-    margin: 0;
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
+    color: __text__;
 }
 
-div.page div.block-info tr
+/* Block name (overrides generic table header)*/
+div.page div.block-info th.title
 {
-    border: 0px;
-    padding-bottom: 0px !important;
-    height: auto;
+    text-align: center !important;
+    text-transform: uppercase;
+}
+
+/* Block image (overrides generic table cell)*/
+div.page div.block-info tr td.block-image
+{
+    border-width: 0px;
+}
+
+/* Attribute column (overrides generic table header) */
+div.page div.block-info tr th.attribute
+{
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
+    color: __text__;
+}
+
+/* Value column (overrides generic table cell) */
+div.page div.block-info tr td.value
+{
+    border-width: 0px;
+    border-style: solid;
+    border-color: __border__;
+    background-color: transparent;
+    color: __text__;
 }
